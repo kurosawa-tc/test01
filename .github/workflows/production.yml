@@ -14,7 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-      if: github.event.inputs.logLevel == 'deploy'
+    - name: Check input dialog
+      run: exit 1
+      if: github.event.inputs.logLevel != 'deploy'
     - run: |
         env
         ls -la
