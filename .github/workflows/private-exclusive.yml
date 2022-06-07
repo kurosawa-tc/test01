@@ -1,0 +1,23 @@
+name: private_exclusive
+
+on:
+  workflow_dispatch:
+  create:
+    branches:
+    - 'feature/*'
+  push:
+    branches:
+    - 'feature/*'
+
+permissions:
+  id-token: write
+  contents: read  
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: |
+        env
+        ls -la
