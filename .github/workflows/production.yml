@@ -1,0 +1,25 @@
+name: private_exclusive
+
+on:
+  workflow_dispatch:
+    inputs:
+      loglevel:
+        description: 'deployと入力してください'
+        required: true
+        default: ''
+    btanches: [main]
+
+permisseons:
+  id-token: write
+  contents: read  
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      if: github.event.inputs.logLevel == 'deploy'
+    - run: |
+        env
+        ls -la
+      if: github.event.inputs.logLevel == 'deploy'
