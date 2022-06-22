@@ -18,5 +18,5 @@ jobs:
     - uses: actions/checkout@v3
     - run: |
         env
-        ls -la
-      if: ${{ contains(github.ref, 'refs/heads/feature/') }}
+        echo "HOGE_HOGE=age" >> $GITHUB_ENV
+        env
