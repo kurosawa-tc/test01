@@ -10,7 +10,7 @@ on:
 
 jobs:
   deploy:
-    if: github.event.inputs.logLevel == 'deploy' && ${{ startsWith(github.head_ref, 'release/') }}
+    if: ${{ github.event.inputs.logLevel == 'deploy' && contains(github.ref, 'refs/heads/release/') }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
