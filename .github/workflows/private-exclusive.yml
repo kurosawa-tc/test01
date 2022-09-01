@@ -4,8 +4,6 @@ on:
   workflow_dispatch:
   create:
   push:
-    branches:
-    - 'feature/*'
 
 permissions:
   id-token: write
@@ -20,3 +18,15 @@ jobs:
         env
         echo "HOGE_HOGE=age" >> $GITHUB_ENV
         env
+    - name: Dump GitHub context
+      run: echo '${{ toJSON(github) }}'
+    - name: Dump job context
+      run: echo '${{ toJSON(job) }}'
+    - name: Dump steps context
+      run: echo '${{ toJSON(steps) }}'
+    - name: Dump runner context
+      run: echo '${{ toJSON(runner) }}'
+    - name: Dump strategy context
+      run: echo '${{ toJSON(strategy) }}'
+    - name: Dump matrix context
+      run: echo '${{ toJSON(matrix) }}'
