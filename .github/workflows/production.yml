@@ -2,15 +2,10 @@ name: production
 
 on:
   workflow_dispatch:
-    inputs:
-      loglevel:
-        description: 'deployと入力してください'
-        required: true
-        default: ''
 
 jobs:
   deploy:
-    if: ${{ github.event.inputs.logLevel == 'deploy' && contains(github.ref, 'refs/heads/release/') }}
+    if: ${{ contains(github.ref, 'refs/heads/release/') }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
