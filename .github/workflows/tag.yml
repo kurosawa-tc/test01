@@ -1,0 +1,25 @@
+name: production
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    if: ${{ contains(github.ref, 'refs/heads/release/') }}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Fetch ntcase binary file
+      uses: dsaltares/fetch-gh-release-asset@master
+      with:
+        repo:  kurosawa-tc/ntgtag
+        version: latest
+        file: ntgtag_linux_x86_64.tar.gz
+        token: ${{ secrets.NTCASE_TOKEN }}
+    - name: Install ntgtag command
+      run: |
+        sudo tar xzf ntgtag_linux_x86_64.tar.gz -C /usr/local/bin
+        sudo chmod +x /usr/local/bin/ntgtag
+    - run: |
+        git tag $(ntgtag $GITHUB_REF)
+        git tag -l
