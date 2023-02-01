@@ -23,7 +23,7 @@ jobs:
         repo:  kurosawa-tc/ntgtag
         version: latest
         file: ntgtag_linux_x86_64.tar.gz
-        token: ${{ secrets.NTCASE_TOKEN }}
+        #token: ${{ secrets.NTCASE_TOKEN }}
     - name: Install ntgtag command
       run: |
         sudo tar xzf ntgtag_linux_x86_64.tar.gz -C /usr/local/bin
