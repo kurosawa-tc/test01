@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
     - name: Fetch ntcase binary file
       uses: dsaltares/fetch-gh-release-asset@master
       with:
@@ -30,6 +32,7 @@ jobs:
         sudo chmod +x /usr/local/bin/ntgtag
     - run: |
         _CUSTOM_TAG=$(git tag -l | ntgtag $GITHUB_REF)
+        git tag -l
         git tag $_CUSTOM_TAG
         git tag -l
         git push -u origin $_CUSTOM_TAG
