@@ -15,7 +15,6 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
 
-    # https://github.com/marketplace/actions/github-pull-request-action
     - name: Create pull request
       id: open-pr
       uses: repo-sync/pull-request@v2
