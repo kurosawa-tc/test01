@@ -1,4 +1,4 @@
-name: production
+name: tag
 
 on:
   workflow_dispatch:
