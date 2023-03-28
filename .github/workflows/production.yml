@@ -13,6 +13,7 @@ jobs:
         env
         ls -la
   tag:
+    needs: deploy
     if: ${{ contains(github.ref, 'refs/heads/release/') }}
     runs-on: ubuntu-latest
     steps:
