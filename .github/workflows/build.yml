@@ -1,0 +1,13 @@
+name: Build
+
+jobs:
+  aJob:    
+    name: A job
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "aVariable,aValue" > vars.csv
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: variables
+        path: vars.csv
