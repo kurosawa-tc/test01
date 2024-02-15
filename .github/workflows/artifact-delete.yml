@@ -1,9 +1,11 @@
 # https://github.com/actions/upload-artifact/issues/290#issuecomment-1374207010
 
-name: Test
+name: DeleteArtifact
 
 on:
-  workflow_dispatch:
+  workflow_run:
+    workflows: ["Build"]
+    types: [completed]
 
 jobs:
   on-success:
